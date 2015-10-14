@@ -1,9 +1,27 @@
 require('mocha');
+const sinon = require('sinon');
 const chai = require('chai');
 
-const server = require('../server');
+const bluebird = require('bluebird');
+
+const search = require('../search');
 
 describe('GET /search', function() {
+  var sandbox;
+  var server;
+
+  beforeEach(function() {
+    sandbox = sinon.sandbox.create();
+
+    // Don't get real data, do nothing
+    sandbox.stub(search, 'init').returns(bluebird.resolve());
+    server = require('../server');
+  });
+
+  afterEach(function() {
+    sandbox.restore();
+  });
+
   it('returns a list of matching products', function(done) {
     server.inject({
       method: 'GET',
@@ -11,11 +29,7 @@ describe('GET /search', function() {
     }, function(response) {
       try {
         chai.expect(response.statusCode).to.equal(200);
-        chai.expect(response.result).to.eql({
-          results: [
-            // TODO
-          ]
-        });
+        chai.expect(response.result).to.contain.keys('results');
         done();
       } catch (err) {
         done(err);

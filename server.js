@@ -1,6 +1,8 @@
 const Hapi = require('hapi');
 const joi = require('joi');
 
+const search = require('./search');
+
 const server = new Hapi.Server();
 server.connection({ port: 3000 });
 
@@ -16,15 +18,18 @@ server.route({
   },
   handler: function(request, reply) {
     reply({
-      results: [
-        // TODO
-      ]
+      results: search.searchByKeyword(request.query.keyword)
     });
   }
 });
 
 server.start(function() {
-  console.log('Server running at:', server.info.uri);
+  console.log('caching product data...');
+  search.init()
+    .then(function() {
+      console.log('cached!');
+      console.log('Server running at:', server.info.uri);
+    });
 });
 
 module.exports = server;
