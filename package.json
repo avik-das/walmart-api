@@ -13,9 +13,11 @@
   "author": "Avik Das <avik.das@berkeley.edu>",
   "license": "BSD",
   "devDependencies": {
+    "chai": "^3.3.0",
     "mocha": "^2.3.3"
   },
   "dependencies": {
-    "hapi": "^10.4.1"
+    "hapi": "^10.4.1",
+    "joi": "^6.9.0"
   }
 }
