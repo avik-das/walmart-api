@@ -92,6 +92,8 @@ function init() {
 }
 
 function searchByKeyword(keyword) {
+  keyword = keyword.toLowerCase();
+
   return _.filter(cachedAPIData, function(data) {
     return data.longDescription.toLowerCase().indexOf(keyword) >= 0;
   });

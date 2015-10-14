@@ -66,7 +66,7 @@ describe('#searchByKeyword', function() {
   });
 
   it('returns a list of matching products', function() {
-    const matching = search.searchByKeyword('backpack');
+    const matching = search.searchByKeyword('BACKPACK');
     chai.expect(matching).to.eql([
       { 'longDescription': 'start backpack end 1' },
       { 'longDescription': 'start Backpack end 2' }
