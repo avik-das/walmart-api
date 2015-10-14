@@ -1,0 +1,21 @@
+{
+  "name": "walmart-api",
+  "version": "0.1.0",
+  "description": "Exploring the Walmart Product API",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha test"
+  },
+  "keywords": [
+    "walmart",
+    "hapi"
+  ],
+  "author": "Avik Das <avik.das@berkeley.edu>",
+  "license": "BSD",
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  },
+  "dependencies": {
+    "hapi": "^10.4.1"
+  }
+}
